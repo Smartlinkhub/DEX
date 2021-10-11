@@ -68,9 +68,9 @@ let deploy_dex (init_storage : dex_storage) : (operation * address) =
   [%Michelson ({| {  UNPPAIIR ;
                      CREATE_CONTRACT
 #if FA2
-#include "./dex_fa2.tz"
+#include "./michelson/dex_fa2.tz"
 #else
-#include "./dex_fa12.tz"
+#include "./michelson/dex_fa12.tz"
 #endif
 ;
                      PAIR } |} : ((key_hash option) * tez * dex_storage) -> (operation * address))] ((None : key_hash option), Tezos.amount, init_storage)
@@ -88,7 +88,7 @@ type lp_token_storage =
 let deploy_lp_token (init_storage : lp_token_storage) : (operation * address) =
   [%Michelson ({| {  UNPPAIIR ;
                      CREATE_CONTRACT
-#include "./lqt_fa12.tz"
+#include "./michelson/lqt_fa12.tz"
 ;
                      PAIR } |} : ((key_hash option) * tez * lp_token_storage) -> (operation * address))] ((None : key_hash option), 0tez, init_storage)
 
