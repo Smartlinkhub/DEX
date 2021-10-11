@@ -68,7 +68,7 @@ class FA2Storage:
 class Env:
     @staticmethod
     def deploy_fa2(init_storage: FA12Storage, token_info):
-        with open("michelson/FA2.tz") as f:
+        with open("tests/FA2.tz") as f:
             michelson = f.read()
 
         fa2 = ContractInterface.from_michelson(michelson).using(**using_params)
@@ -95,7 +95,7 @@ class Env:
 
     @staticmethod
     def deploy_fa12(init_storage: FA12Storage, token_info):
-        with open("michelson/FA12.json") as f:
+        with open("tests/FA12.json") as f:
             source = f.read()
 
         micheline = json.loads(source)
